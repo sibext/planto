@@ -1,11 +1,23 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-alex_cohen = User.create first_name: 'Alex', last_name: 'Cohen', email: 'alex.cohen@mail.com', password: 111111
-ally_bogard = User.create first_name: 'Ally', last_name: 'Bogard', email: 'ally.bogard@mail.com', password: 111111
+sibext = Organization.create name: 'Sibext Ltd.', url: 'sibext.com', email: 'contacts@sibext.com'
 
-memory_miner = Project.create name: 'Memory miner'
-pin_pin = Project.create name: 'Pin Pin'
+alex_cohen = User.create first_name: 'Alex',
+                         last_name: 'Cohen',
+                         email: 'alex.cohen@mail.com',
+                         password: 111111
+
+ally_bogard = User.create first_name: 'Ally',
+                          last_name: 'Bogard',
+                          email: 'ally.bogard@mail.com',
+                          password: 111111
+
+memory_miner = Project.create name: 'Memory miner',
+                              organization: sibext
+
+pin_pin = Project.create name: 'Pin Pin',
+                         organization: sibext
 
 Report.create [
     {

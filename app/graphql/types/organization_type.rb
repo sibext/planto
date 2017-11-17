@@ -1,12 +1,12 @@
 module Types
-  ProjectType = GraphQL::ObjectType.define do
-    name 'Project'
+  OrganizationType = GraphQL::ObjectType.define do
+    name 'Organization'
     description 'a description'
 
-    field :id,          !types.Int
-    field :name,       !types.String
-    field :url,       !types.String
-    field :organization,       !OrganizationType
+    field :id, !types.Int
+    field :name, !types.String
+    field :url, !types.String
+    field :email, !types.String
     field :createdAt do
       type types.String
       property :created_at
