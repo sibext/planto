@@ -13,16 +13,14 @@ module Types
     end
     field :project, !ProjectType
     field :user, !UserType
-    field :createdAt do
+    field :created_at do
       type types.String
-      property :created_at
       resolve -> (obj, args, ctx) {
         obj.created_at.iso8601
       }
     end
-    field :updatedAt do
+    field :updated_at do
       type types.String
-      property :updated_at
       resolve -> (obj, args, ctx) {
         obj.updated_at.iso8601
       }
