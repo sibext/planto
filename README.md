@@ -1,24 +1,70 @@
-# README
+# Planto
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**ruby version:** 2.4.2
 
-Things you may want to cover:
+**gemset:** planto
 
-* Ruby version
+## How to start application for developing
 
-* System dependencies
+Install postgres dependencies:
 
-* Configuration
+_For mac_
 
-* Database creation
+```
+brew install libpq
+```
 
-* Database initialization
+_For linux_
 
-* How to run the test suite
+```
+apt-get install postgresql-client
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Start postgres container:
 
-* Deployment instructions
+```
+docker-compose up
+```
 
-* ...
+Create migrations:
+
+```
+rake db:create db:migrate
+```
+
+Start your Rails server:
+
+```
+rails start
+```
+
+Start webpack dev server:
+
+```
+./bin/webpack-dev-server
+
+```
+
+## How to start system tests
+
+```
+rake assets:precompile
+rails test:system
+```
+
+## How to start common tests
+
+```
+rails test
+```
+
+## How to add a new package
+
+```
+yarn add package-name
+```
+
+## On/Off caching in dev mode
+```
+rails dev:cache
+```
