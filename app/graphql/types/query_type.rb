@@ -5,7 +5,7 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :projects, types[Types::ProjectType] do
     description "Project field"
-    resolve ->(obj, args, ctx) {Project.all.order(id: :desc)}
+    resolve ->(obj, args, ctx) {Organization.first.projects.order(id: :desc)}
   end
 
   field :reports, types[Types::ReportType] do
