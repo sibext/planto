@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # GraphQL
 gem 'graphiql-rails'
 gem 'graphql'
+
+# Auth and user management
+gem 'devise'
