@@ -68,3 +68,27 @@ yarn add package-name
 ```
 rails dev:cache
 ```
+
+## Production usage
+
+```
+version: "3"
+
+volumes:
+  db: {}
+
+services:
+  app:
+    image: sibext/planto:latest
+    environment:
+      SECRET_KEY_BASE: xxxxxxxxx
+    depends_on:
+      - db
+    ports:
+    - 3000:3000
+
+  db:
+    image: postgres:9.6.5
+    volumes:
+      - db:/var/lib/postgresql/data
+```
