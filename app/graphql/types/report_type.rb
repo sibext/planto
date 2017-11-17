@@ -5,6 +5,12 @@ module Types
 
     field :id, !types.Int
     field :text, !types.String
+    field :reported_at do
+      type !types.String
+      resolve -> (obj, args, ctx) {
+        obj.reported_at.iso8601
+      }
+    end
     field :project, !ProjectType
     field :user, !UserType
     field :createdAt do

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20171117165435) do
 
   create_table "reports", force: :cascade do |t|
     t.text "text"
+    t.date "reported_at", default: -> { "now()" }
     t.bigint "project_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
