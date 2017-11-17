@@ -3,10 +3,10 @@ module Types
     name 'Project'
     description 'a description'
 
-    field :id,          !types.Int
-    field :name,       !types.String
-    field :url,       !types.String
-    field :organization,       !OrganizationType
+    field :id, !types.Int
+    field :name, !types.String
+    field :url, !types.String
+    field :organization, !OrganizationType
     field :createdAt do
       type types.String
       property :created_at
