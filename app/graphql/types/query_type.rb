@@ -11,9 +11,12 @@ Types::QueryType = GraphQL::ObjectType.define do
   field :reports, types[Types::ReportType] do
     description "Report field"
     argument :user_id, types.Int
+    argument :project_id, types.Int
     resolve ->(obj, args, ctx) {
       if args[:user_id]
         User.find(args[:user_id]).reports.order(id: :desc)
+      elsif args[:project_id]
+        Project.find(args[:project_id]).reports.order(id: :desc)
       else
         ctx[:current_user].reports.order(id: :desc)
       end
