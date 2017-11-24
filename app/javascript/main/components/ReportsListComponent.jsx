@@ -12,13 +12,6 @@ const query = gql`
 `
 
 class ReportsListComponent extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      one: 111
-    }
-  }
-
   render() {
     const { data: { loading, error, reports } } = this.props
 
