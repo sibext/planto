@@ -58,6 +58,13 @@ rails test:system
 rails test
 ```
 
+_Links:_
+
+[Graphiql IDE](http://localhost:3000/graphiql)
+
+[Home page](http://localhost:3000/graphiql)
+
+
 ## How to add a new package
 
 ```
