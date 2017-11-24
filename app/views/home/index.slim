@@ -1,0 +1,10 @@
+- if user_signed_in?
+  p = current_user.email
+  = link_to 'SignOut', destroy_user_session_path, method: :delete
+- else
+  = link_to 'SignIn', new_user_session_path
+
+
+#MainPage
+= javascript_pack_tag 'main'
+= stylesheet_pack_tag 'main'

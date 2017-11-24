@@ -61,3 +61,6 @@ gem 'graphql'
 
 # Auth and user management
 gem 'devise'
+
+# Frontend
+gem 'slim-rails'
