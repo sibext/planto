@@ -14,14 +14,18 @@ const query = gql`
 class ProjectsListComponent extends Component {
 
   render() {
-    const {data} = this.props
-    if (data.loading) {
+    const { data: { loading, error, projects } } = this.props
+
+    if (loading) {
       return <div>Loading...</div>
+    } else if (error) {
+      return <p>Error!</p>
     }
+
     return (
       <div>
         <h1>Projects list</h1>
-        {data.projects.map((item, index) =>(
+        {projects.map((item, index) =>(
           <div key={item.id}>
             <Link to={`/projects/${item.id}/reports`}>
               {item.name}
