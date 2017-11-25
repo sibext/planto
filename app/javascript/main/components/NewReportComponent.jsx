@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {gql, graphql} from 'react-apollo'
 
 import ReportsListComponent from "./ReportsListComponent"
+import ProjectsSelectorComponent from "./ProjectsSelectorComponent"
+import ValidationErrorsComponent from "./ValidationErrorsComponent"
 import { reports_query } from "../queries/reports_query"
 import { create_report } from "../mutations/create_report"
 
@@ -11,15 +13,31 @@ class NewReportComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      errors: null
+      errors: null,
+      text: "",
+      project_id: null
     }
   }
 
+  handleInputChange = (event) => {
+    console.log(event)
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value
+    })
+  }
+
+
   onClick = () => {
+    const {project_id, text} = this.state
+
     this.props.mutate({
       variables: {
-        text: 'I added new...',
-        project_id: 1,
+        text: text,
+        project_id: parseInt(project_id),
         reported_at:  new Date(Date.UTC(96, 11, 1, 0, 0, 0))
       },
       update: (proxy, { data: { create_report } }) => {
@@ -42,33 +60,20 @@ class NewReportComponent extends Component {
 
   render() {
     const { errors } = this.state
-    console.log(errors)
 
     return (
       <div>
-        <div>
-          { errors &&
-            <div>
-              {errors.map((item, index) =>(
-                  <div key={index}>
-                    {item}
-                  </div>
-                )
-              )}
-            </div>
-          }
-        </div>
+        <ValidationErrorsComponent errors={errors}/>
 
         <h1>New report</h1>
 
         <div>
-          <select>
-            <option value="1">Project 1</option>
-            <option value="2">Project 2</option>
-          </select>
+          <ProjectsSelectorComponent handleInputChange={this.handleInputChange}/>
         </div>
 
-        <textarea rows="5" cols="65" name="text" />
+        <textarea rows="5" cols="65" name="text"
+                  value={this.state.text}
+                  onChange={this.handleInputChange}/>
         <br/>
         <div onClick={this.onClick}>Submit</div>
 

@@ -64,6 +64,8 @@ _Links:_
 
 [Home page](http://localhost:3000/graphiql)
 
+[Apollo client docs](https://www.apollographql.com/docs/react/basics/queries.html)
+
 
 ## How to add a new package
 
