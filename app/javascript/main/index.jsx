@@ -15,7 +15,8 @@ import './styles/styles.sass'
 
 import HomeComponent from "./components/HomeComponent"
 import NotFondComponent from "./components/NotFoundComponent"
-import ReportsListComponent from "./components/ReportsListComponent"
+import ProjectsReportsListComponent from "./components/ProjectsReportsListComponent"
+import NewReportComponent from "./components/NewReportComponent"
 
 const networkInterface = createNetworkInterface({
   uri: '/graphql',
@@ -38,7 +39,8 @@ ReactDOM.render(
         <div className="main-container limited">
           <Switch>
             <Route exact path="/" component={HomeComponent}/>
-            <Route exact path="/projects/:project_id/reports" component={ReportsListComponent}/>
+            <Route exact path="/projects/:project_id/reports" component={ProjectsReportsListComponent}/>
+            <Route exact path="/reports/new" component={NewReportComponent}/>
             <Route path="*" component={NotFondComponent} />
           </Switch>
         </div>

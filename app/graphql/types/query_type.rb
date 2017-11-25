@@ -5,7 +5,7 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :projects, types[Types::ProjectType] do
     description "Project field"
-    resolve ->(obj, args, ctx) {Organization.first.projects.order(id: :desc)}
+    resolve ->(obj, args, ctx) {Organization.first.projects.order(id: :asc)}
   end
 
   field :reports, types[Types::ReportType] do
@@ -14,11 +14,11 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :project_id, types.Int
     resolve ->(obj, args, ctx) {
       if args[:user_id]
-        User.find(args[:user_id]).reports.order(id: :desc)
+        User.find(args[:user_id]).reports.order(id: :asc)
       elsif args[:project_id]
-        Project.find(args[:project_id]).reports.order(id: :desc)
+        Project.find(args[:project_id]).reports.order(id: :asc)
       else
-        ctx[:current_user].reports.order(id: :desc)
+        ctx[:current_user].reports.order(id: :asc)
       end
     }
   end

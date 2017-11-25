@@ -1,15 +1,9 @@
 import React, {Component} from 'react'
-import {gql, graphql} from 'react-apollo'
+import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom';
 
-const query = gql`
-  query{
-    projects{
-      id
-      name
-    }
-  }
-`
+import { projects_query } from "../queries/projects_query"
+
 
 class ProjectsListComponent extends Component {
 
@@ -38,5 +32,5 @@ class ProjectsListComponent extends Component {
   }
 }
 
-const ProjectsListComponentWithData = graphql(query)(ProjectsListComponent)
+const ProjectsListComponentWithData = graphql(projects_query)(ProjectsListComponent)
 export default ProjectsListComponentWithData

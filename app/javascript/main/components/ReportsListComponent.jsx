@@ -1,19 +1,13 @@
 import React, {Component} from 'react'
-import {gql, graphql} from 'react-apollo'
+import { graphql } from 'react-apollo'
 import { Link } from 'react-router-dom'
 
-const query = gql`
-  query CurrentUserForLayout($project_id: Int){
-    reports(project_id: $project_id){
-      id
-      text
-    }
-  }
-`
+import { reports_query } from "../queries/reports_query"
+
 
 class ReportsListComponent extends Component {
   render() {
-    const { data: { loading, error, reports } } = this.props
+    const { data: { loading, error, reports }, title } = this.props
 
     if (loading) {
       return <div>Loading...</div>
@@ -23,7 +17,9 @@ class ReportsListComponent extends Component {
 
     return (
       <div>
-        <h1>Reports list</h1>
+        { title &&
+          <h1>{title}</h1>
+        }
         {reports.map((item, index) =>(
           <div key={item.id}>
             <Link to={`/projects/${item.id}/reports`}>
@@ -37,10 +33,10 @@ class ReportsListComponent extends Component {
   }
 }
 
-const ReportsListComponentWithData = graphql(query, {
+const ReportsListComponentWithData = graphql(reports_query, {
     options: (ownProps) => ({
       variables: {
-        project_id: parseInt(ownProps.match.params.project_id)
+        project_id: ownProps.project_id
       }
     }),
   })(ReportsListComponent)
