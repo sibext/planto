@@ -40,18 +40,23 @@ class NewReportComponent extends Component {
         reported_at:  new Date(Date.UTC(96, 11, 1, 0, 0, 0))
       },
       update: (proxy, { data: { create_report } }) => {
-        // Read the data from our cache for this query.
-        const data = proxy.readQuery({ query: reports_query });
+        if (!create_report.errors) {
+          // Read the data from our cache for this query.
+          const data = proxy.readQuery({ query: reports_query })
 
-        // Add our todo from the mutation to the end.
-        data.reports.push(create_report.report);
+          // Add our todo from the mutation to the end.
+          data.reports.push(create_report.report)
 
-        // Write our data back to the cache.
-        proxy.writeQuery({ query: reports_query, data });
+          // Write our data back to the cache.
+          proxy.writeQuery({ query: reports_query, data })
+        }
       },
     })
       .then(({ data }) => {
-        this.setState({errors: JSON.parse(data.create_report.errors)})
+        this.setState({
+          errors: JSON.parse(data.create_report.errors),
+          text: ''
+        })
       }).catch((error) => {
         this.setState({errors: [error]})
     })
