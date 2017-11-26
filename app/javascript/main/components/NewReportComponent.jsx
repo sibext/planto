@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {gql, graphql} from 'react-apollo'
+import { graphql } from 'react-apollo'
 
 import ReportsListComponent from "./ReportsListComponent"
 import ProjectsSelectorComponent from "./ProjectsSelectorComponent"
@@ -20,7 +20,6 @@ class NewReportComponent extends Component {
   }
 
   handleInputChange = (event) => {
-    console.log(event)
     const target = event.target
     const value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
