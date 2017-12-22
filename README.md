@@ -91,6 +91,8 @@ services:
     image: sibext/planto:latest
     environment:
       SECRET_KEY_BASE: xxxxxxxxx
+      POSTGRES_USER=postgres
+      POSTGRES_HOST=db
     depends_on:
       - db
     ports:

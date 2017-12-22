@@ -23,6 +23,14 @@ Types::QueryType = GraphQL::ObjectType.define do
     }
   end
 
+  field :report, Types::ReportType do
+    description "Report field"
+    argument :id, !types.Int
+    resolve ->(obj, args, ctx) {
+      Report.find(args[:id])
+    }
+  end
+
   field :me, Types::UserType do
     description "Current user field"
     resolve ->(obj, args, ctx) {ctx[:current_user]}

@@ -21,9 +21,12 @@ class ReportsListComponent extends Component {
           <h1>{title}</h1>
         }
         {reports.map((item, index) =>(
-          <div key={item.id}>
-            <Link to={`/projects/${item.id}/reports`}>
-              {item.text}
+          <div key={item.id} className="ReportsElement">
+            <div>{item.text}</div>
+
+            <Link to={`/reports/${item.id}/edit`}
+                  className="ReportsButtonEdit">
+              edit
             </Link>
           </div>
           )
