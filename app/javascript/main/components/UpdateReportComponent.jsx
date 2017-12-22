@@ -14,7 +14,7 @@ class NewReportComponent extends Component {
   }
 
   render() {
-    const { data: { loading, error, report } } = this.props
+    const { data: { loading, error, report }, history } = this.props
 
     if (loading) {
       return <div>Loading...</div>
@@ -32,6 +32,7 @@ class NewReportComponent extends Component {
           text={report.text}
           project_id={report.project.id}
           reported_at={report.reported_at}
+          history={history}
         />
 
       </div>

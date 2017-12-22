@@ -54,6 +54,7 @@ class NewReportComponent extends Component {
           errors: JSON.parse(data.update_report.errors),
           text: ''
         })
+        this.props.history.push(`/projects/${this.state.project_id}/reports/`)
       }).catch((error) => {
         this.setState({errors: [error]})
     })
