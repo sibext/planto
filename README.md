@@ -58,6 +58,15 @@ rails test:system
 rails test
 ```
 
+_Links:_
+
+[Graphiql IDE](http://localhost:3000/graphiql)
+
+[Home page](http://localhost:3000/graphiql)
+
+[Apollo client docs](https://www.apollographql.com/docs/react/basics/queries.html)
+
+
 ## How to add a new package
 
 ```
@@ -82,6 +91,8 @@ services:
     image: sibext/planto:latest
     environment:
       SECRET_KEY_BASE: xxxxxxxxx
+      POSTGRES_USER=postgres
+      POSTGRES_HOST=db
     depends_on:
       - db
     ports:

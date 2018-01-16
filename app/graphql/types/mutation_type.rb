@@ -9,5 +9,6 @@ Types::MutationType = GraphQL::ObjectType.define do
   # end
 
   field :create_report, Mutations::CreateReport.field
+  field :update_report, Mutations::UpdateReport.field
   field :create_project, Mutations::CreateProject.field
 end
